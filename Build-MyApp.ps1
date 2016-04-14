@@ -1,3 +1,7 @@
+# ./this.ps1 -Target MyTarget
+param(
+    [string]$Target='Default'
+)
 $VerbosePreference = 'Continue' # Enable Verbose
 $ErrorActionPreference = 'Stop' # Stop on error
 
@@ -12,7 +16,7 @@ Import-Module .\CodeCakeBuilder\CodeCakeBuilder.psm1
 Initialize-CodeCakeBuilder
 
 # Build & call
-Invoke-CodeCakeBuilder -NoInteraction -target=Default
+Invoke-CodeCakeBuilder -NoInteraction "-target=$target"
 
 # Restore previous working directory
 Pop-Location
